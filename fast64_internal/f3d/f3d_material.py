@@ -1735,7 +1735,9 @@ def update_node_values_of_material(material: Material, context):
     else:
         nodes["UV"].node_tree = bpy.data.node_groups["UV"]
 
-    if f3dMat.rdp_settings.g_lighting:
+    if f3dMat.rdp_settings.g_packed_normals:
+        nodes["Shade Color"].node_tree = bpy.data.node_groups["ShdCol_V"]
+    elif f3dMat.rdp_settings.g_lighting:
         nodes["Shade Color"].node_tree = bpy.data.node_groups["ShdCol_L"]
     else:
         nodes["Shade Color"].node_tree = bpy.data.node_groups["ShdCol_V"]
